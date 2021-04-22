@@ -69,7 +69,7 @@ def add_ray_tune_args(parser):
     parser.add_argument(
         '--trial-gpus',
         type=float,
-        default=None,
+        default=1,
         help=("Resources to allocate for each trial. Passed"
               " to `tune.run_experiments`."))
     parser.add_argument(
@@ -86,7 +86,7 @@ def add_ray_tune_args(parser):
               " launch additional Ray actors that use GPUs."))
     parser.add_argument(
         '--num-samples',
-        default=1,
+        default=10,
         type=int,
         help=tune_help_string("Number of times to repeat each trial."))
     parser.add_argument(
@@ -113,6 +113,7 @@ def add_ray_tune_args(parser):
         '--trial-cpus',
         type=int,
         default=multiprocessing.cpu_count(),
+        # default=1,
         help=tune_help_string("Resources to allocate for each trial."))
     parser.add_argument(
         '--checkpoint-frequency',

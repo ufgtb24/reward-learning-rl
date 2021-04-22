@@ -33,6 +33,7 @@ class ExperimentRunnerClassifierRL(ExperimentRunner):
         replay_pool = self.replay_pool = (
             get_replay_pool_from_variant(variant, training_environment))
         sampler = self.sampler = get_sampler_from_variant(variant)
+        # 创建网络 Dense :inputs:[state,action] outputs:size=1
         Qs = self.Qs = get_Q_function_from_variant(variant, training_environment)
         policy = self.policy = get_policy_from_variant(variant, training_environment, Qs)
         initial_exploration_policy = self.initial_exploration_policy = (
@@ -162,8 +163,18 @@ def main(argv=None):
     instructions.
     """
     # __package__ should be `development.main`
-    run_example_local('classifier_rl.main', argv)
+    # run_example_local('classifier_rl.main', argv)
+    run_example_local('examples.classifier_rl', argv)
 
 
 if __name__ == '__main__':
-    main(argv=sys.argv[1:])
+    
+    input=['--n_goal_examples=10',
+'--task=Image48SawyerDoorPullHookEnv-v0',
+'--algorithm=VICERAQ',
+'--num-samples=5',
+'--n_epochs=300',
+'--active_query_frequency=10']
+    
+    # main(argv=sys.argv[1:])
+    main(argv=input)

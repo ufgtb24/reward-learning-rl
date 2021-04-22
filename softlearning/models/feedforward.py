@@ -6,7 +6,7 @@ from softlearning.utils.keras import PicklableKerasModel
 
 def feedforward_model(input_shapes,
                       output_size,
-                      hidden_layer_sizes,
+                      hidden_layer_sizes,  # M,M
                       activation='relu',
                       output_activation='linear',
                       preprocessors=None,
@@ -31,7 +31,7 @@ def feedforward_model(input_shapes,
     )(preprocessed_inputs)
 
     out = concatenated
-    for units in hidden_layer_sizes:
+    for units in hidden_layer_sizes: # M,M
         out = tf.keras.layers.Dense(
             units, *args, activation=activation, **kwargs
         )(out)

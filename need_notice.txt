@@ -1,4 +1,6 @@
 problem when create env:
+0. two mujoco path
 1. requirement.txt  delete git @ branch
 2. modify package version in requirement.txt
 3. delete the need of ruamel-yaml in requirement.txt
+4. sudo apt-get install libglew-dev libglfw3-dev

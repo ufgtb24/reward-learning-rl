@@ -36,7 +36,7 @@ def get_environment_from_params(environment_params):
     domain = environment_params['domain']
     environment_kwargs = environment_params.get('kwargs', {}).copy()
 
-    return get_environment(universe, domain, task, env_params)
+    return get_environment(universe, domain, task, environment_kwargs)
 
 def get_goal_example_environment_from_variant(variant):
     import gym

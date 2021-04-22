@@ -29,7 +29,7 @@ def get_replay_pool_from_variant(variant, env, *args, **kwargs):
         *args,
         observation_space=env.observation_space,
         action_space=env.action_space,
-        **replay_pool_kwargs,
+        **replay_pool_kwargs,  #'max_size': 1e6
         **kwargs)
 
     return replay_pool

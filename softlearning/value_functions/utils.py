@@ -24,11 +24,11 @@ VALUE_FUNCTIONS = {
 def get_Q_function_from_variant(variant, env, *args, **kwargs):
     Q_params = variant['Q_params']
     Q_type = Q_params['type']
-    Q_kwargs = deepcopy(Q_params['kwargs'])
+    Q_kwargs = deepcopy(Q_params['kwargs']) # 'hidden_layer_sizes': (M, M)
 
     preprocessor_params = Q_kwargs.pop('preprocessor_params', None)
-    preprocessor = get_preprocessor_from_params(env, preprocessor_params)
-
+    preprocessor = get_preprocessor_from_params(env, preprocessor_params) # None
+    # tuple of two nets
     return VALUE_FUNCTIONS[Q_type](
         observation_shape=env.active_observation_shape,
         action_shape=env.action_space.shape,
